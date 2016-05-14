@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义插件</title>
+	<script type="text/javascript" src="jq/jquery1.8.js"></script>
+	<script type="text/javascript">
+		(function($){
+			$.extend({
+				"MinNum":function(a,b){
+					return (a<b)?"第一个小":"第二个小";
+				}
+				});
+		})(jQuery);
+
+		$(function(){
+			$("#tips").html($.MinNum(12,10));
+		})
+	</script>
+</head>
+<body>
+	
+	<div id="tips"></div>
+	
+</body>
+</html>

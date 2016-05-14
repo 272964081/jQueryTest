@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="http://www.imooc.com/data/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="http://www.imooc.com/data/jquery-ui-1.9.2.min.js" type="text/javascript"></script>
+	<link href="http://www.imooc.com/data/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script>
+
+		$(function(){
+			$("#sortable").sortable({
+				delay:1,
+				opacity:0.3
+			});
+
+			$("#accordion").accordion({
+				header:"h3",
+				event:"mouseover",
+				alwaysOpen:false
+			});
+			$("#tabs").tabs({
+				// fx:{opacity:"toggle",height:"toggle"},
+				event:"mouseover"
+			});
+
+			$("#btn-delete").click(function(){
+				if($("#test_dialog li").length>0){
+					sys_Alert();
+					return false;
+				}
+			});
+
+			function sys_Alert(){
+				$("#dialog-modal").dialog({
+					height:180,
+					modal:true,
+					title:"系统提示",
+					hide:"slide",
+					buttons:{
+						'取消':function(){
+							$(this).dialog("close");
+						},
+						'确定':function(){
+							$("#test_dialog li:first-child").remove();
+							$(this).dialog("close");
+						}
+					},
+					open:function(event,ui){
+						$(this).html("");
+						$(this).html("是否删除"+$("#test_dialog li:first-child").text()+"?");
+					}
+					
+				})
+			}
+
+			$("#menu_test").menu();
+
+			$("#in").tooltip({
+				show:{
+					effect:"slideDown",
+					delay:150
+				},
+				hide:{
+					effect:"slideUp",
+					delay:150
+				},
+				positon:{
+					my:"left top",
+					at:"left bottom"
+				}
+			});
+
+		})
+		(function($){
+			"MinNum":function(a,b){
+				return a>b?b:a;
+			}
+		})(jQuery);
+
+	</script>
+	<style type="text/css">
+		li{
+			background-color: #ccc;
+			width: 120px;
+			border-bottom: 1px solid #fff;
+		}
+		#accordion li:hover{
+			background-color: #000;
+			color:#fff;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#accordion a{
+			color: #000;
+			text-decoration: none;
+		}
+		#testtabs{
+			width: 550px;
+		}
+
+		.ui-menu
+		{
+			width: 150px;
+		}
+
+	</style>
+	<body>
+		<ul id="sortable">
+			<li class="item1">text1</li>
+			<li class="item2">text2</li>
+			<li class="item3">text3</li>
+			<li class="item4">text4</li>
+			<li class="item5">text5</li>
+			<li class="item6">text6</li>
+			<li class="item7">text7</li>
+			<li class="item8">text8</li>
+			<li class="item9">text9</li>
+			<li class="item10">text10</li>
+		</ul>
+		<div id="accordion">
+			<h3><a href="#">我的折叠测试</a></h3>
+			<ul>
+				<li>折叠子项1</li>
+				<li>折叠子项2</li>
+				<li>折叠子项3</li>
+				<li>折叠子项4</li>
+				<li>折叠子项5</li>
+				<li>折叠子项6</li>
+				<li>折叠子项7</li>
+				<li>折叠子项8</li>
+				<li>折叠子项9</li>
+				<li>折叠子项10</li>
+			</ul>
+			<h3><a href="#">折叠测试2</a></h3>
+			<ul>
+				<li>折叠子项21</li>
+				<li>折叠子项22</li>
+				<li>折叠子项23</li>
+				<li>折叠子项24</li>
+				<li>折叠子项25</li>
+				<li>折叠子项26</li>
+				<li>折叠子项27</li>
+				<li>折叠子项28</li>
+				<li>折叠子项29</li>
+				<li>折叠子项210</li>
+			</ul>
+
+		</div>
+		<div id="testtabs">
+			<div id="tabs">
+				<ul>
+					<li><a href="#tab_1">标签1</a></li>
+					<li><a href="#tab_2">标签2</a></li>
+				</ul>
+				<div id="tab_1">
+					<p>qp1</p>
+					<p>qp2</p>
+					<p>p3</p>
+					<p>qqp4</p>
+					<p>p5</p>
+					<p>qqp6</p>
+					<p>pqq7</p>
+					<p>pq8</p>
+					<p>pqq9</p>
+					<p>pq10</p>
+
+				</div>
+				<div id="tab_2">
+					<p>p1</p>
+					<p>p2</p>
+					<p>p3</p>
+					<p>p4</p>
+					<p>p5</p>
+					<p>p6</p>
+					<p>p7</p>
+					<p>p8</p>
+					<p>p9</p>
+					<p>p10</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="test_dialog">
+			<div>
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<button id="btn-delete">删除</button>
+					<div id="dialog-modal"></div>
+				</ul>
+			</div>
+		</div>
+
+		<ul id="menu_test">
+			<li>
+				<a href="#">一级菜单</a>
+				<ul>
+					<li>子项1</li>
+					<li>子项2</li>
+					<li>子项3</li>
+					<li><a href="#">二级菜单</a>
+						<ul>
+							<li>子项3</li>
+							<li>子项3</li>
+							<li>子项3</li>
+							<li>子项3</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#">一级菜单2</a>
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+			</li>
+		</ul>
+		<div id="tooltip">
+			<div id="title"><input type="text" id="in" title="提示内容"></div>
+		</div>
+
+	</body>
+	</html>

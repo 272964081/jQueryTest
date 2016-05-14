@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ul列表项子项被选中时获取子项背景颜色的插件</title>
+	<script src="http://www.imooc.com/data/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		(function($){
+			$.extend({
+				setBackColor:function(obj,color){
+					obj.each(function(){
+						
+						$(this).hover(
+							function(){
+								$(this).css("backgroundColor",color);
+							},
+							function(){
+								$(this).css("backgroundColor","");
+							}
+							);
+					})
+				},
+			});			
+		})(jQuery);
+
+		$(function(){
+			$.setBackColor($("#mUl li"),"orange");
+		})
+
+
+		
+	</script>
+	<style type="text/css">
+		ul{
+			width: 150px;
+		}
+		li{
+			background-color: #ccc;
+			color: #000;
+		}
+		
+		#tips{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<ul id="mUl">
+		<li>子项1</li>
+		<li>子项2</li>
+		<li>子项3</li>
+		<li>子项4</li>
+		<li>子项5</li>
+		<li>子项6</li>
+		<li>子项7</li>
+		<li>子项8</li>
+		<li>子项9</li>
+		<li>子项10</li>
+	</ul>
+</body>
+</html>
